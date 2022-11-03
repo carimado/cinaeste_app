@@ -1,4 +1,4 @@
-# 🎬 cinaeste_app
+# 🎬 Cinaeste App
 Project 2 - Cinaeste App - General Assembly - Full-Stack Application
 
 Welcome to my project, here is a link to my app.
