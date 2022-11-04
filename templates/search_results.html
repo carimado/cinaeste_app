@@ -9,11 +9,12 @@
     {% for result in search_results %}
     <div>{{result['imdbID']}}</div>
     <div>{{result['Title']}}</div>
-    <img src="{{result['Poster']}}" alt="">
+    <img src="{{result['Poster']}}" alt="Image of {{ result['Title'] }} Poster">
     <form action="/add_favourite" method="POST">
-        <input type="type" value="{{ result['imdbID'] }}" name="favourite_movie" hidden>
+        <input type="type" value="{{ result }}" name="favourite_movie" hidden>
         <input type="submit" name="add_favourite" value="ADD">
     </form>
+    
 
     {% endfor%}
 

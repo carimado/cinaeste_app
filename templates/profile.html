@@ -10,4 +10,9 @@
 <div class="f_name">{{ f_name }}</div>
 <div class="l_name">{{ l_name }}</div>
 <div class="bio">{{ bio }}</div>
+
+{% for movie in fave_movies %}
+<div>{{ movie[3] }}</div>
+<img src="{{ movie[4] }}" alt="">
+{% endfor %}
 {% endblock %}

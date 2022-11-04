@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import psycopg2
 import requests
+import json
 # import bcrypt
 
 app = Flask(__name__)
@@ -30,6 +31,14 @@ def search_results():
 def add_favourite_action():
 
     imdbID = request.form['favourite_movie']
+    x = imdbID.replace("'", '"')
+    json_data = json.loads(x)
+
+    imdbID_data = json_data['imdbID']
+    title = json_data['Title']
+    poster = json_data['Poster']
+
+    print(json_data)
 
     # for later on - 
     # faveMovie = requests.get(f'http://www.omdbapi.com/?i={imdbID}&apikey=4b9f1a76')
@@ -37,10 +46,11 @@ def add_favourite_action():
 
     # title = data['Title']
 
+    # print(imdbID)
 
     conn = psycopg2.connect("dbname=cinaeste")
     cur = conn.cursor()
-    cur.execute("INSERT INTO fave_movies (user_id, movie_name) VALUES (%s, %s)", [user_id, imdbID])
+    cur.execute("INSERT INTO fave_movies (user_id, movie_id, movie_title, movie_poster) VALUES (%s, %s, %s, %s)", [user_id, imdbID_data, title, poster])
 
 
 
@@ -78,7 +88,13 @@ def profile():
     cur.execute("SELECT * FROM users")
     id, f_name, l_name, bio, avatar = cur.fetchone()
 
-    return render_template('profile.html', f_name=f_name, l_name=l_name, bio=bio, avatar=avatar)
+    cur2 = conn.cursor()
+    cur2.execute('SELECT * FROM fave_movies WHERE user_id =%s', [user_id])
+    fave_movies = cur2.fetchall()
+
+    print(fave_movies)
+
+    return render_template('profile.html', f_name=f_name, l_name=l_name, bio=bio, avatar=avatar, fave_movies=fave_movies)
 
 app.run(debug=True)
 
