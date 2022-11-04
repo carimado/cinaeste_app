@@ -6,13 +6,23 @@
 
 {% block body %} 
 
+<!-- FOR PROFILE -->
 <div class="avatar">{{ avatar }}</div>
 <div class="f_name">{{ f_name }}</div>
 <div class="l_name">{{ l_name }}</div>
 <div class="bio">{{ bio }}</div>
 
+<!-- FOR FAVOURITE MOVIES -->
 {% for movie in fave_movies %}
 <div>{{ movie[3] }}</div>
 <img src="{{ movie[4] }}" alt="">
 {% endfor %}
+
+<!-- FOR PLAYLIST -->
+{% for list in watch_list %}
+<div>{{ list[2] }}</div>
+<div>{{ list[3] }}</div>
+<a href="/watch-list/{{list[0]}}">Watch List</a>
+{% endfor %}
+
 {% endblock %}

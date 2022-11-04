@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block body %} 
+
+    <h1>hello</h1>
+    {% for movie in search_results %}
+    <div>{{movie['imdbID']}}</div>
+    <!-- CREATE A ROUTE FOR WATCH LIST -->
+    <form action="/watch_list_add" method="POST">
+        <input type="type" value="{{ movie }}" name="movie_to_add" hidden>
+        <input type="submit" value="ADD TO WATCHLIST">
+    </form>
+    {% endfor %}
+
+{% endblock %}
