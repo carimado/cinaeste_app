@@ -31,11 +31,24 @@ def add_favourite_action():
 
     imdbID = request.form['favourite_movie']
 
-    faveMovie = requests.get(f'http://www.omdbapi.com/?s={movie}&apikey=4b9f1a76')
+    # for later on - 
+    # faveMovie = requests.get(f'http://www.omdbapi.com/?i={imdbID}&apikey=4b9f1a76')
+    # data = faveMovie.json()
 
-    # conn = psycopg2.connect("dbname=cinaeste")
-    # cur = conn.cursor()
-    # cur.execute("INSERT INTO fave_movies (user_id, title, movie_name) VALUES (1, )")
+    # title = data['Title']
+
+
+    conn = psycopg2.connect("dbname=cinaeste")
+    cur = conn.cursor()
+    cur.execute("INSERT INTO fave_movies (user_id, movie_name) VALUES (%s, %s)", [user_id, imdbID])
+
+
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    # change db movie_name to fave_movie_id 
 
     # ISSUE - HOW TO PASS AN OBJECT AND NOT A STRING
 
