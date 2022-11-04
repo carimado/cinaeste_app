@@ -5,8 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinaeste - Discover And Share Your Favourite Movies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% block head %} {% endblock %}
 </head>
 <body>
-    <h1>Hello World</h1>
+
+    {% block body %} 
+
+    <form action="/search_results" method="POST">
+        <input type="text" name="movie">
+        <input type="submit" name="search" id="submit-button">
+    </form>
+
+    {% endblock %}
 </body>
 </html>
+

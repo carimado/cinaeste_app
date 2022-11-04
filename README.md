@@ -33,8 +33,8 @@ Project Plan:
 2. Search Page w/ OMDb API (Show results of search)
 
 [] Database
-1. Create schema.sql for database
-2. Create seed.sql for database 
+1. Create schema.sql for database ✓
+2. Create seed.sql for database ✓
 
 [] Stage 2 - Programming and CRUD
 1. profile.html - HTML/CSS 
