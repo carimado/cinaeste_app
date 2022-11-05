@@ -121,9 +121,21 @@ def sign_up():
 
 @app.route('/sign_up_action', methods=['POST'])
 def sign_up_action():
+    # NO SESSION YET AND NO PASSWORD HASH YET
+    f_name = request.form['f_name']
+    l_name = request.form['l_name']
+    email = request.form['email']
+    password = request.form['password']
 
+    conn = psycopg2.connect("dbname=cinaeste")
+    cur = conn.cursor()
+    cur.execute('INSERT INTO users (f_name, l_name, email, password) VALUES (%s, %s, %s, %s)', [f_name, l_name, email, password])
 
-    return 
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    return redirect('/')
 
 
 # LOGIN FORM AND ACTION

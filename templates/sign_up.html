@@ -3,12 +3,15 @@
 {% block head %} 
 
 {% endblock %}
-    <form class="" method="POST" action="/sign_action">
-        <input type="text" name="name" placeholder="NAME">
-        <input type="text" name="email" placeholder="EMAIL">
-        <input type="text" name="password" placeholder="PASSWORD">
-        <input id="submit" type="submit" value="Sign up">
-    </form>
+
 {% block body %} 
+<h1>SIGN UP</h1>
+<form class="" method="POST" action="/sign_up_action">
+    <input type="text" name="f_name" placeholder="First Name">
+    <input type="text" name="l_name" placeholder="Last Name">
+    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="password" placeholder="Password">
+    <input id="submit" type="submit" value="SIGN UP">
+</form>
 
 {% endblock %}
