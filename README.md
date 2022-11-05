@@ -20,26 +20,38 @@ Project Plan:
 
 [] Ideation & Planning
 1. User stories / Features
-2. Create wireframes
+2. Create wireframes - ✓
 3. Design Inspo and Mockups
 
-[] Set-up & Base Templates
-1. Setup Dev Environment w/ Virtual Environment
-2. HTML - Index, Search Page, Login, Profile Pages
-3. Python/Flask - Create Routes for above pages
+[✓] Set-up & Base Templates
+1. Setup Dev Environment w/ Virtual Environment - ✓
+2. HTML - Index, Search Page, Login, Profile Pages - ✓
+3. Python/Flask - Create Routes for above pages - ✓
 
-[] Stage 1 - Programming
-1. Index Page - HTML/CSS
-2. Search Page w/ OMDb API (Show results of search)
+[✓] Stage 1 - Programming
+1. Index Page - HTML/CSS - ✓
+2. Search Page w/ OMDb API (Show results of search) - ✓
 
-[] Database
-1. Create schema.sql for database ✓
-2. Create seed.sql for database ✓
+[✓] Database
+1. Create schema.sql for database - ✓
+2. Create seed.sql for database - ✓
 
-[] Stage 2 - Programming and CRUD
-1. profile.html - HTML/CSS 
-2. Registration and Login w/ password hashing and sessions
-3. Testing with DB
+[] Stage 2 - CRUD and Routing
+1. profile.html - HTML/CSS - ✓
+2. Linking pages and routes (through submitting forms and jinja linking) - ✓
+3. Registration and Login w/ password hashing and sessions
+4. Testing with DB
+5. DELETE (Remove movies from Watchlist and Favourites)
+
+[] Stage 3 - 
+1. Image Uploader for Avatar
+2. Bio - UPDATE SQL
+3. Movie of the Day
+4. Other Static Pages (about.html, etc.)
+
+[] Stage 4 - CSS
+1. index.html
+2. profile.html
 
 ✓
 
