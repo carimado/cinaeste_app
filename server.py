@@ -6,6 +6,7 @@ import json
 
 app = Flask(__name__)
 
+# FOR SESSIONS
 app.config['SECRET_KEY'] = 'secret key'
 
 # user_id = 1
@@ -19,6 +20,7 @@ def index():
 @app.route('/search_results', methods=['GET', 'POST'])
 def search_results():
 
+    # THIS CONTROL FLOW DOESNT WORK 
     movie = request.form['movie']
     if movie == False:
         return render_template('search_results.html', search_results=search_results)
@@ -59,10 +61,6 @@ def add_favourite_action():
     cur.close()
     conn.close()
 
-    # change db movie_name to fave_movie_id 
-
-    # ISSUE - HOW TO PASS AN OBJECT AND NOT A STRING
-
     return redirect('/')
 
 
@@ -91,7 +89,6 @@ def watch_list_search_result():
 
     search_results = data['Search']
 
-    # http://127.0.0.1:5000/selected-dog?breed=corgi&age=
     return render_template('watch_list_search_result.html', id=id, search_results=search_results)
 
 @app.route('/watch_list_add', methods=['POST'])
@@ -109,7 +106,7 @@ def watch_list_add():
     conn.commit()
     cur.close()
     conn.close()
-    
+
     print(movie_id)
 
     return redirect('/')
@@ -118,21 +115,43 @@ def watch_list_add():
 def about():
     return render_template('about.html')
 
-@app.route('/register')
-def register():
-    return render_template('register.html')
+@app.route('/sign_up')
+def sign_up():
+    return render_template('sign_up.html')
 
-@app.route('/register-action', methods=['POST'])
-def register_action():
+@app.route('/sign_up_action', methods=['POST'])
+def sign_up_action():
+
+
     return 
 
+
+# LOGIN FORM AND ACTION
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+@app.route('/login_form_action', methods=['POST'])
+def login_form_action():
+    email = request.form['email']
+    password = request.form['password']
+
+    return redirect('/')
+
+
+
+
+@app.route('/logout')
+def logout():
+    response = redirect('/')
+    session.pop('user_id', None)
+    session.pop('list_id', None)
+    return response
+
 @app.route('/profile')
 def profile():
 
+    # FOR TESTING
     session['user_id'] = 1
 
     conn = psycopg2.connect("dbname=cinaeste")
@@ -152,7 +171,7 @@ def profile():
 
     return render_template('profile.html', f_name=f_name, l_name=l_name, bio=bio, avatar=avatar, fave_movies=fave_movies, watch_list=watch_list)
 
-app.run(debug=True, port=5002)
+app.run(debug=True)
 
 
 

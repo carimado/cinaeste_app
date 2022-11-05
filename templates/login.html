@@ -1,0 +1,16 @@
+
+{% extends 'index.html' %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block body %} 
+
+<form class="login-form form-container" action="/login_form_action" method="POST">
+    <input type="text" name="email" placeholder="email">
+    <input type="text" name="password" placeholder="pw">
+    <input id="submit" type="submit" value="LOG IN">
+</form> 
+
+{% endblock %}

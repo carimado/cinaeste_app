@@ -10,6 +10,13 @@
 </head>
 <body>
 
+    <a href="/login">Log in</a>
+    {% if session.user_id %}
+    <a href="/profile">Profile</a>
+    {% else %}
+    <a href="/logout">Log out</a>
+    {% endif %}
+
     {% block body %} 
 
     <form action="/search_results" method="POST">

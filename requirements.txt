@@ -1,0 +1,6 @@
+pip install flask
+pip install psycopg2
+pip install requests
+pip install bcrypt
+pip install cloudinary
+pip install python-dotenv
