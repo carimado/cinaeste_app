@@ -1,0 +1,10 @@
+User Journey:
+
+1. User logs in
+2. Session is created - "user_id"
+3. This session is stored and is then used to get information from the DB
+    - this contains their watchlists created and their favourited movies
+4. If user logs out - session is deleted
+
+
+Issue: 

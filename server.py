@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 import psycopg2
 import requests
 import json
-# import bcrypt
+import bcrypt
 
 app = Flask(__name__)
 
@@ -17,6 +17,8 @@ def index():
 
     return render_template('index.html')
 
+# FROM INDEX.HTML > SEARCH_RESULTS.HTML
+# THIS SHOWS A LIST OF ALL THE MOVIE RESULTS
 @app.route('/search_results', methods=['GET', 'POST'])
 def search_results():
 
@@ -32,6 +34,7 @@ def search_results():
 
         return render_template('search_results.html', search_results=search_results)
 
+# ADD FAVOURITE BUTTON > DATABASE > DISPLAYED IN PROFILE
 @app.route('/add_favourite', methods=['POST'])
 def add_favourite_action():
 
@@ -64,6 +67,8 @@ def add_favourite_action():
     return redirect('/')
 
 
+# DISPLAYS ALL THE MOVIES IN THE WATCHLIST FROM PROFILE.HTML
+# THIS PAGE HAS A SEARCH FUNCTION > WATCH_LIST_SEARCH_RESULT.HTML
 @app.route('/watch-list/<id>')
 def watch_list_action(id):
 
@@ -91,6 +96,8 @@ def watch_list_search_result():
 
     return render_template('watch_list_search_result.html', id=id, search_results=search_results)
 
+# THE (HIDDEN) FORM "ADD TO WATCH LIST" > REDIRECTS HOME
+# AND ADDS TO WATCH_LIST_ADD.HTML
 @app.route('/watch_list_add', methods=['POST'])
 def watch_list_add():
     movie = request.form['movie_to_add']
@@ -115,6 +122,7 @@ def watch_list_add():
 def about():
     return render_template('about.html')
 
+# SIGN UP > SIGN_UP_ACTION
 @app.route('/sign_up')
 def sign_up():
     return render_template('sign_up.html')
@@ -138,7 +146,7 @@ def sign_up_action():
     return redirect('/')
 
 
-# LOGIN FORM AND ACTION
+# LOGIN.HTML > ACTION
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -148,9 +156,29 @@ def login_form_action():
     email = request.form['email']
     password = request.form['password']
 
+    conn = psycopg2.connect("dbname=cinaeste")
+    cur = conn.cursor()
+    cur.execute("SELECT id, email, password FROM users WHERE email=%s", [email])
+    user_record = cur.fetchone()
+
+    cur.close()
+    conn.close()
+
+    user_id, user_email, user_password = user_record
+    # valid = bcrypt.checkpw(password.encode('utf-8'), user_password.encode('utf-8'))
+
+
+    if user_record:
+        print(f'Logged in as ID: {user_email}, Password: {password}')
+        response = redirect('/profile')
+        session['user_id'] = user_id
+        return response
+    else:
+        print(email)
+        print('User record not found')
+        return redirect('/login')
+
     return redirect('/')
-
-
 
 
 @app.route('/logout')
@@ -158,18 +186,22 @@ def logout():
     response = redirect('/')
     session.pop('user_id', None)
     session.pop('list_id', None)
+    session.pop('user_email', None)
     return response
 
+
+# INDEX.HTML > PROFILE.HTML
+# DISPLAYS PROFILE, FAVOURITE MOVIES, WATCHLIST
 @app.route('/profile')
 def profile():
 
     # FOR TESTING
-    session['user_id'] = 1
+    # session['user_id'] = 1
 
     conn = psycopg2.connect("dbname=cinaeste")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users")
-    id, f_name, l_name, bio, avatar = cur.fetchone()
+    cur.execute("SELECT * FROM users WHERE id =%s", [session['user_id']])
+    id, f_name, l_name, email, password, bio, avatar = cur.fetchone()
 
     cur2 = conn.cursor()
     cur2.execute('SELECT * FROM fave_movies WHERE user_id =%s', [session['user_id']])
@@ -180,6 +212,7 @@ def profile():
     watch_list = cur3.fetchall()
 
     print(fave_movies)
+    print(session['user_id'])
 
     return render_template('profile.html', f_name=f_name, l_name=l_name, bio=bio, avatar=avatar, fave_movies=fave_movies, watch_list=watch_list)
 
