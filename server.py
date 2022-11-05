@@ -1,13 +1,26 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, url_for
 import psycopg2
 import requests
 import json
 import bcrypt
+import os
+import cloudinary
+import cloudinary.uploader
+
+CLOUDINARY_CLOUD = os.environ.get('CLOUDINARY_CLOUD')
+CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY')
+CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET')
 
 app = Flask(__name__)
 
 # FOR SESSIONS
 app.config['SECRET_KEY'] = 'secret key'
+
+cloudinary.config(
+    cloud_name = CLOUDINARY_CLOUD,
+    api_key = CLOUDINARY_API_KEY,
+    api_secret = CLOUDINARY_API_SECRET,
+)
 
 # user_id = 1
 watch_list = 0
@@ -170,7 +183,7 @@ def login_form_action():
 
     if user_record:
         print(f'Logged in as ID: {user_email}, Password: {password}')
-        response = redirect('/profile')
+        response = redirect('/')
         session['user_id'] = user_id
         return response
     else:
@@ -216,7 +229,42 @@ def profile():
 
     return render_template('profile.html', f_name=f_name, l_name=l_name, bio=bio, avatar=avatar, fave_movies=fave_movies, watch_list=watch_list)
 
-app.run(debug=True)
+@app.route('/upload_profile_picture', methods=['POST'])
+def upload_profile_picture():
+
+    image = request.files['image']
+
+    response = cloudinary.uploader.upload(image, filename=image.filename)
+
+    image_id = response['public_id']
+
+    cloudinary_image = cloudinary.CloudinaryImage(image_id)
+
+    print(cloudinary_image)
+
+    uploaded_image = cloudinary_image.image()
+
+    thumbnail_image = [
+        cloudinary_image.image(transformation=["thumbnail"])
+    ]
+
+    print(uploaded_image)
+    print(session['user_id'])
+
+    conn = psycopg2.connect("dbname=cinaeste")
+    cur = conn.cursor()
+    cur.execute('UPDATE users SET avatar=%s WHERE id=%s', [thumbnail_image[0], session['user_id']])
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+
+    return redirect(url_for('profile'))
+
+if __name__ == '__main__':
+    from dotenv import load_dotenv
+    app.run(debug=True)
 
 
 

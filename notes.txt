@@ -8,3 +8,4 @@ User Journey:
 
 
 Issue: 
+linking the user id to all the info

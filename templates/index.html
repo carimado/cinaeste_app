@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinaeste - Discover And Share Your Favourite Movies</title>
+    <title>Cineaste - Discover And Share Your Favourite Movies</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     {% block head %} {% endblock %}
 </head>
 <body>
 
-    <a href="/login">Log in</a>
-    {% if session.user_id %}
-    <a href="/profile">Profile</a>
-    {% else %}
-    <a href="/logout">Log out</a>
-    {% endif %}
-
     {% block body %} 
+
+    {% if session.user_id %}
+        <a href="/profile">Profile</a>
+        <a href="/logout">Log out</a>
+    {% else %}
+        <a href="/login">Log in</a>
+    {% endif %}
 
     <form action="/search_results" method="POST">
         <input type="text" name="movie">

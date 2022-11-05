@@ -6,8 +6,21 @@
 
 {% block body %} 
 
+{% if session.user_id %}
+    <a href="/">Home</a>
+    <a href="/logout">Log out</a>
+{% else %}
+    <a href="/login">Log in</a>
+{% endif %}
+
 <!-- FOR PROFILE -->
-<div class="avatar">{{ avatar }}</div>
+<form action="/upload_profile_picture" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
+    <input type="submit" value="Upload Profile Picture">
+</form>
+
+<div class="avatar">{{ avatar | safe }}</div>
+<!-- <img src="http://res.cloudinary.com/diykkuhmu/image/upload/t_thumbnail/{{ avatar }}/"> -->
 <div class="f_name">{{ f_name }}</div>
 <div class="l_name">{{ l_name }}</div>
 <div class="bio">{{ bio }}</div>
