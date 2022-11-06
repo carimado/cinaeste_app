@@ -61,14 +61,6 @@ def add_favourite_action():
 
     print(json_data)
 
-    # for later on - 
-    # faveMovie = requests.get(f'http://www.omdbapi.com/?i={imdbID}&apikey=4b9f1a76')
-    # data = faveMovie.json()
-
-    # title = data['Title']
-
-    # print(imdbID)
-
     conn = psycopg2.connect("dbname=cinaeste")
     cur = conn.cursor()
     cur.execute("INSERT INTO fave_movies (user_id, movie_id, movie_title, movie_poster) VALUES (%s, %s, %s, %s)", [session['user_id'], imdbID_data, title, poster])
@@ -79,6 +71,21 @@ def add_favourite_action():
 
     return redirect('/')
 
+@app.route('/delete_watchlist/<id>')
+def delete_watchlist(id):
+
+    conn = psycopg2.connect('dbname=cinaeste')
+    cur = conn.cursor()
+    cur.execute('DELETE FROM watch_list_movies WHERE watch_list_id =%s', [id])
+    conn.commit()
+
+    cur.execute('DELETE FROM watch_list WHERE watch_list_id =%s', [id])
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+    return redirect('/profile')
 
 # DISPLAYS ALL THE MOVIES IN THE WATCHLIST FROM PROFILE.HTML
 # THIS PAGE HAS A SEARCH FUNCTION > WATCH_LIST_SEARCH_RESULT.HTML

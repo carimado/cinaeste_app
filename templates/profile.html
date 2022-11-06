@@ -29,6 +29,10 @@
 {% for movie in fave_movies %}
 <div>{{ movie[3] }}</div>
 <img src="{{ movie[4] }}" alt="">
+<form action="/remove_favourite" method="POST">
+    <input type="type" value="{{ result }}" name="remove_favourite" hidden>
+    <input type="submit" name="remove_favourite" value="REMOVE">
+</form>
 {% endfor %}
 
 <!-- FOR PLAYLIST -->
@@ -36,6 +40,7 @@
 <div>{{ list[2] }}</div>
 <div>{{ list[3] }}</div>
 <a href="/watch-list/{{list[0]}}">Watch List</a>
+<a href="/delete_watchlist/{{list[0]}}">DELETE</a>
 {% endfor %}
 
 

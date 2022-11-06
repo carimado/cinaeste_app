@@ -1,10 +1,10 @@
-# 🎬 Cinaeste App
-Project 2 - Cinaeste App - General Assembly - Full-Stack Application
+# 🎬 Cineaste App
+Project 2 - Cineaste App - General Assembly - Full-Stack Application
 
 Welcome to my project, here is a link to my app.
 
 Description: 
-- Cinaeste - a cinema enthusiast; a cinephile. This app aims to connect movie lovers. 
+- Cineaste - a cinema enthusiast; a cinephile. This app aims to connect movie lovers. 
 - By allowing users to create their own profiles, favourite movies, create and share "Watch Lists" and review the community watch lists.
 
 Tech Stack: 
@@ -62,3 +62,4 @@ MVP -
 
 Extras - 
 - Reviews and comments for watch lists
+- Top 250 movies and shows
