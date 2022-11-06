@@ -10,19 +10,48 @@
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="navbar-block-1">
+            <a id="menu" href="/">Cineaste</a>
+            <a href="#">Reviews</a>
+            <a href="#">About</a>
+        </div>
+        <div class="navbar-block-2">
+            <form action="/search_results" method="POST">
+                <input id="search" type="text" name="movie" placeholder="Search for movies, TV shows...">
+                <input id="submit" type="submit" name="search" id="submit-button">
+            </form>
+        </div>
+        <div class="navbar-block-3">
+            {% if session.user_id %}
+                <a href="/profile">Profile</a>
+                <a href="/logout">Log out</a>
+            {% else %}
+                <a href="/login">Log in</a>
+            {% endif %}
+        </div>
+    </nav>
+
     {% block body %} 
 
-    {% if session.user_id %}
-        <a href="/profile">Profile</a>
-        <a href="/logout">Log out</a>
-    {% else %}
-        <a href="/login">Log in</a>
-    {% endif %}
+    <div class="hero-container">
+        <div class="hero-block-1">
+            <h1>Dive into the film world</h1>
+            <p>Join the community of cinephiles and share your thoughts on community driven watchlists.</p>
+            <a href="/sign_up">Create your account</a>
+        </div>
+        <div class="hero-block-2">
 
-    <form action="/search_results" method="POST">
-        <input type="text" name="movie">
-        <input type="submit" name="search" id="submit-button">
-    </form>
+
+        </div>
+    </div>
+
+    <section class="latest-news-container">
+        <div class="border latest-1"></div>
+        <div class="border latest-2"></div>
+        <div class="border latest-3"></div>
+        <div class="border latest-4"></div>
+    </section>
 
     {% endblock %}
 </body>

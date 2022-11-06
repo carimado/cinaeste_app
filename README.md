@@ -46,7 +46,7 @@ Project Plan:
 [] Stage 3 - 
 1. Image Uploader for Avatar
 2. Bio - UPDATE SQL
-3. Movie of the Day
+3. Movie of the Day for index.html
 4. Other Static Pages (about.html, etc.)
 
 [] Stage 4 - CSS
