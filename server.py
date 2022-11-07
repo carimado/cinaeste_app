@@ -87,6 +87,19 @@ def delete_watchlist(id):
 
     return redirect('/profile')
 
+@app.route('/delete_from_watchlist/<id>')
+def delete_from_watchlist(id):
+
+    conn = psycopg2.connect('dbname=cinaeste')
+    cur = conn.cursor()
+    cur.execute('DELETE FROM watch_list_movies WHERE watch_list_movie_id =%s', [id])
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+    return redirect('/profile')
+
 # DISPLAYS ALL THE MOVIES IN THE WATCHLIST FROM PROFILE.HTML
 # THIS PAGE HAS A SEARCH FUNCTION > WATCH_LIST_SEARCH_RESULT.HTML
 @app.route('/watch-list/<id>')
@@ -98,7 +111,29 @@ def watch_list_action(id):
     cur.execute("SELECT * FROM watch_list_movies WHERE watch_list_id=%s", [session['list_id']])
     watch_list = cur.fetchall()
 
-    return render_template('watch_list.html', watch_list=watch_list)
+    movie_list_data = []
+
+    for movie in watch_list:
+        response = requests.get(f'http://www.omdbapi.com/?i={movie[2]}&apikey=4b9f1a76')
+        data = response.json()
+
+        movie_details = {}
+
+        movie_details['imdbID'] = data['imdbID']
+        movie_details['Title'] = data['Title']
+        movie_details['Year'] = data['Year']
+        movie_details['Runtime'] = data['Runtime']
+        movie_details['Director'] = data['Director']
+        movie_details['Poster'] = data['Poster']
+        movie_details['imdbRating'] = data['imdbRating']
+
+        movie_list_data.append(movie_details)
+
+    # print(movie_list_data)
+    print(watch_list)
+    
+
+    return render_template('watch_list.html', movie_list_data=movie_list_data)
 
 @app.route('/add_to_watch_list/<id>')
 def add_to_watch_list_action(id):

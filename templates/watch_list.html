@@ -7,10 +7,16 @@
 {% block body %} 
     <h1>ALL THE MOVIES IN THIS WATCHLIST</h1>
     <!-- THIS IS A LIST OF WATCH LISTS -->
-    {% for movie in watch_list %}
-    <div>{{movie[2]}}</div>
-    <a href="/add_to_watch_list/{{movie[1]}}">ADD MOVIE TO THIS WATCH LIST</a>
+
+
+    {% for movie in movie_list_data %}
+    <div>{{movie['Title']}}</div>
+    <div>{{movie['Year']}}</div>
+    <div>{{movie['Director']}}</div>
+    <img src="{{movie['Poster']}}" alt="">
+    <a href="/delete_from_watchlist/{{movie['imdbID']}}">Delete</a>
     {% endfor %}
+
 
     <h2>SEARCH MOVIE TO ADD</h2>
     <form action="/watch_list_search_result/" method="POST">
