@@ -5,13 +5,22 @@
 {% endblock %}
 
 {% block body %} 
-<h1>SIGN UP</h1>
-<form class="" method="POST" action="/sign_up_action">
-    <input type="text" name="f_name" placeholder="First Name">
-    <input type="text" name="l_name" placeholder="Last Name">
-    <input type="text" name="email" placeholder="Email">
-    <input type="text" name="password" placeholder="Password">
-    <input id="submit" type="submit" value="SIGN UP">
-</form>
+<div class="hero-container">
+    <h1 class="max-text-height">SIGN UP</h1>
+</div>
+
+<div class="login-form">
+    <form class="login" method="POST" action="/sign_up_action">
+        <h1>Hello Cineaste! I want to join the community.</h1>
+        <p>My name is </p>
+        <input type="text" name="f_name" placeholder="First Name" required>
+        <input type="text" name="l_name" placeholder="Last Name">
+        <p>and my email is </p>
+        <input type="text" name="email" placeholder="Email" required>
+        <p>I want my password to be </p>
+        <input type="text" name="password" placeholder="Password" required>
+        <input id="submit-login" type="submit" value="SIGN UP">
+    </form>
+</div>
 
 {% endblock %}
