@@ -6,43 +6,66 @@
 
 {% block body %} 
 
-{% if session.user_id %}
-    <a href="/">Home</a>
-    <a href="/logout">Log out</a>
-{% else %}
-    <a href="/login">Log in</a>
-{% endif %}
+<div class="hero-container" id="profile-hero-style">
+    <h1 class="max-text-height-2">YOUR PROFILE, <span class="name">{{ f_name }}</span>.</h1>
+</div>
 
 <!-- FOR PROFILE -->
-<form action="/upload_profile_picture" method="POST" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/*" required>
-    <input type="submit" value="Upload Profile Picture">
-</form>
 
-<div class="avatar">{{ avatar | safe }}</div>
+
+<div class="box flex">
+    <div class="a">
+        <div class="avatar-container">
+
+            <div class="avatar">{{ avatar | safe }}</div>
+            <form action="/upload_profile_picture" method="POST" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <input type="submit" value="Upload Profile Picture">
+            </form>
+
+            <div class="bio">
+                <h3 class="f_name">Name: {{ f_name }} {{ l_name }}</h2>
+                <h4 class="bio">Bio: {{ bio }}</h3>
+            </div>
+        
+        </div>
+    </div>
+    <div class="b-c flex column">
+      <div class="b">
+        <h2>Your Top Movies</h2>
+        <div class="favourite-movies-container">
+                {% for movie in fave_movies %}
+                <div class="contents">
+                    <img src="{{ movie[4] }}" alt="">
+                    <p>{{ movie[3] }}</p>
+                    <a href="/delete_from_fave_movies/{{movie[2]}}">-</a>
+                </div>
+                {% endfor %}
+        </div>
+
+      </div>
+      <div class="c">
+        <h2>Your Watchlists</h2>
+        <div class="watchlist-container">
+            {% for list in watch_list %}
+            <div class="contents">
+                <h3>{{ list[2] }}</h3>
+                <h4>{{ list[3] }}</h4>
+                <a href="/watch-list/{{list[0]}}">Watch List</a>
+                <a href="/delete_watchlist/{{list[0]}}">DELETE</a>
+            </div>
+            {% endfor %}
+        </div>
+
+      </div>
+    </div>
+<div>
+
+
+
+
+
 <!-- <img src="http://res.cloudinary.com/diykkuhmu/image/upload/t_thumbnail/{{ avatar }}/"> -->
-<div class="f_name">{{ f_name }}</div>
-<div class="l_name">{{ l_name }}</div>
-<div class="bio">{{ bio }}</div>
-
-<!-- FOR FAVOURITE MOVIES -->
-{% for movie in fave_movies %}
-<div>{{ movie[3] }}</div>
-<img src="{{ movie[4] }}" alt="">
-<form action="/remove_favourite" method="POST">
-    <input type="type" value="{{ result }}" name="remove_favourite" hidden>
-    <input type="submit" name="remove_favourite" value="REMOVE">
-</form>
-{% endfor %}
-
-<!-- FOR PLAYLIST -->
-{% for list in watch_list %}
-<div>{{ list[2] }}</div>
-<div>{{ list[3] }}</div>
-<a href="/watch-list/{{list[0]}}">Watch List</a>
-<a href="/delete_watchlist/{{list[0]}}">DELETE</a>
-{% endfor %}
-
 
 
 {% endblock %}

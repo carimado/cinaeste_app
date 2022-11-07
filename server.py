@@ -71,6 +71,21 @@ def add_favourite_action():
 
     return redirect('/')
 
+@app.route('/delete_from_fave_movies/<movie_id>')
+def delete_from_fave_movies(movie_id):
+
+        print(movie_id)
+    
+        conn = psycopg2.connect("dbname=cinaeste")
+        cur = conn.cursor()
+        cur.execute("DELETE FROM fave_movies WHERE movie_id = %s", [movie_id])
+    
+        conn.commit()
+        cur.close()
+        conn.close()
+    
+        return redirect('/profile')
+
 @app.route('/delete_watchlist/<id>')
 def delete_watchlist(id):
 

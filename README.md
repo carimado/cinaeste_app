@@ -21,7 +21,7 @@ Project Plan:
 [] Ideation & Planning
 1. User stories / Features
 2. Create wireframes - ✓
-3. Design Inspo and Mockups
+3. Design Inspo and Mockups - ✓
 
 [✓] Set-up & Base Templates
 1. Setup Dev Environment w/ Virtual Environment - ✓
@@ -40,18 +40,21 @@ Project Plan:
 1. profile.html - HTML/CSS - ✓
 2. Linking pages and routes (through submitting forms and jinja linking) - ✓
 3. Registration and Login w/ password hashing and sessions
-4. Testing with DB
-5. DELETE (Remove movies from Watchlist and Favourites) - ✓
+4. DELETE (Remove movies from Watchlist and Favourites) - ✓
 
 [] Stage 3 - 
 1. Image Uploader for Avatar - ✓
 2. Bio - UPDATE SQL
 3. Movie of the Day for index.html
 4. Other Static Pages (about.html, etc.)
+5. Community Reviews
 
 [] Stage 4 - CSS
 1. index.html
 2. profile.html
+3. login/sign_up.html - ✓
+4. search_results.html 
+5. movie_description.html
 
 ✓
 

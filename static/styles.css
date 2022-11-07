@@ -36,6 +36,11 @@ html {
     width: 50%;
 }
 
+#logo {
+    font-weight: 700;
+    text-transform: bold;
+}
+
 .navbar-block-1 a {
     margin-right: 100px;
 }
@@ -151,22 +156,6 @@ input::placeholder {
 }
 
 /* ____________________________________________ */
-/* SEARCH_RESULT.HTML */
-/* ____________________________________________ */
-
-.search-result-container {
-    display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    /* justify-content: center; */
-}
-
-.search-result-container > img {
-    height: 225px;
-    width: auto;
-}
-
-/* ____________________________________________ */
 /* LOGIN.HTML */
 /* ____________________________________________ */
 
@@ -208,3 +197,148 @@ input::placeholder {
 .max-text-height {
     font-size: 150px;
 }
+
+/* ____________________________________________ */
+/* SEARCH_RESULTS.HTML */
+/* ____________________________________________ */
+
+.max-text-height-2 {
+    font-size: 100px;
+}
+
+.search-result-container {
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Grotesk', sans-serif;
+}
+
+.search-results {
+    border: 1px solid black;
+    padding: 5px;
+    flex: 1 1 20%;
+}
+
+.search-results img {
+    width: 50%;
+    /* center */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+.search-description {
+    /* border: 2px solid red; */
+    width: 100%;
+}
+
+.search-description p {
+    font-size: 13px;
+}
+
+.search-description input[type=submit] {
+    width: 75px;
+    height: 75px;
+    border: none;
+    border-radius: 50%;
+    background-color: #0BA34E;
+    color: white;
+}
+
+/* ____________________________________________ */
+/* PRFOILE.HTML */
+/* ____________________________________________ */
+
+#profile-hero-style {
+    border-bottom: black 2px solid;
+}
+.name {
+    background-color: #0BA34E;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+}
+
+.favourite-movies-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    border: #0BA34E 2px solid;
+}
+
+.favourite-movies-container img {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.contents a {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #0BA34E;
+    color: white;
+    text-align: center;
+}
+
+.box {
+    display: flex;
+    align-items: stretch;
+}
+  
+.a {
+    flex: 0 0 150px;
+    padding: 30px;
+}
+
+.b > h2 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+  
+.b-c {
+    flex-direction: column;
+    display: flex;
+    flex-grow: 1;
+    padding: 30px;
+}
+.c > h2 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.watchlist-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    border: #0BA34E 2px solid;
+}
+

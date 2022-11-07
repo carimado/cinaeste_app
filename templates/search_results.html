@@ -6,20 +6,27 @@
 
 {% block body %} 
 
-        {% for result in search_results %}
-        <div class="search-result-container">
-            <!-- <div>{{result['imdbID']}}</div> -->
+<div class="hero-container">
+    <h1 class="max-text-height-2">SEARCH RESULTS</h1>
+</div>
+
+    <div class="search-result-container">
+    {% for result in search_results %}
+        <!-- <div>{{result['imdbID']}}</div> -->
+        <div class="search-results">
             <img src="{{result['Poster']}}" alt="Image of {{ result['Title'] }} Poster">
 
             <div class="search-description">
                 <h2>{{result['Title']}}</h2>
+                <p>{{result['Year']}}</p>
                 <form action="/add_favourite" method="POST">
                     <input type="type" value="{{ result }}" name="favourite_movie" hidden>
-                    <input type="submit" name="add_favourite" value="ADD TO FAVOURITES">
+                    <input type="submit" name="add_favourite" value="Favourite">
                 </form>
             </div>
         </div>
 
-        {% endfor %}
+    {% endfor %}
+    </div>
 
 {% endblock %}
