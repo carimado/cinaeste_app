@@ -58,6 +58,11 @@ Project Plan:
 
 ✓
 
+TODO FOR 8/11
+- NAVBAR COMPLETE
+- INDEX COMPLETE (COVER BG PHOTO 50VH)
+- PROFILE COMPLETE
+
 __________________________
 
 MVP - 
@@ -66,3 +71,4 @@ MVP -
 Extras - 
 - Reviews and comments for watch lists
 - Top 250 movies and shows
+- Trending Watchlists (shows all watchlists from all users)

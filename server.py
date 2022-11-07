@@ -107,7 +107,7 @@ def delete_from_watchlist(id):
 
     conn = psycopg2.connect('dbname=cinaeste')
     cur = conn.cursor()
-    cur.execute('DELETE FROM watch_list_movies WHERE watch_list_movie_id =%s', [id])
+    cur.execute("DELETE FROM watch_list_movies WHERE movie_id =%s", [id])
     conn.commit()
 
     cur.close()
