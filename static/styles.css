@@ -17,6 +17,7 @@ html {
     background-repeat: no-repeat;
     font-family: 'Space Grotesk', sans-serif;
     color: #99AABB;
+    height: 100vh;
 }
 
 /* __________________________________________________________ */
@@ -49,6 +50,7 @@ html {
 
 #logo {
     font-weight: 700;
+    font-size: 20px;
     text-transform: bold;
 }
 
@@ -205,11 +207,25 @@ input::placeholder {
 .login-form input[type=text] {
     width: 400px;
     height: 2rem;
-    border: 1px solid #B3A0CF;
-    background-color: #f5f5f5;
+    border: 1px solid #2C3440;
+    background-color: transparent;
     border-top: none;
     border-left: none;
     border-right: none;
+}
+
+.login-form input[type=text]:focus {
+    outline: 1px solid #0BA34E;
+}
+
+.login-form input[type=text]::placeholder {
+    padding-left: 5px;
+    font-size: 15px;
+    color: #D0D7DE;
+}
+
+input, select, textarea{
+    color: #D0D7DE;
 }
 
 
@@ -236,14 +252,14 @@ input::placeholder {
 }
 
 .search-result-container {
-    border: 1px solid black;
+    border: 1px solid #2C3440;
     display: flex;
     flex-wrap: wrap;
     font-family: 'Grotesk', sans-serif;
 }
 
 .search-results {
-    border: 1px solid black;
+    border: 1px solid #2C3440;
     padding: 5px;
     flex: 1 1 20%;
 }
