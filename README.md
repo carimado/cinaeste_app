@@ -58,11 +58,6 @@ Project Plan:
 
 ✓
 
-TODO FOR 8/11
-- NAVBAR COMPLETE
-- INDEX COMPLETE (COVER BG PHOTO 50VH)
-- PROFILE COMPLETE
-
 __________________________
 
 MVP - 

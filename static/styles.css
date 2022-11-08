@@ -10,11 +10,11 @@
   padding: 0;
 }
 
-html {
+body {
     /* background-color: #D5D6D2; */
     background: rgb(21,24,28);
-    background: linear-gradient(0deg, rgba(21,24,28,1) 0%, rgba(32,39,46,1) 89%, rgba(49,59,69,1) 100%);
-    /* background-repeat: repeat; */
+    background: linear-gradient(0deg, rgba(21,24,28,1) 0%, rgba(32,39,46,1) 89%, rgba(49,59,69,1) 100%); 
+    background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Space Grotesk', sans-serif;
     color: #99AABB;
@@ -77,10 +77,12 @@ html {
     border: none;
     background-color: #2C3440;
     font-family: 'Space Grotesk', sans-serif;
+    padding-left: 10px;
 }
 
 input[type=text]:focus {
     outline: 2px solid #0BA34E;
+    padding-left: 10px;
 }
 
 input[type=submit] {
@@ -135,8 +137,9 @@ input::placeholder {
 }
 
 .hc1 {
-    margin-top: 675px;
+    margin-top: 700px;
     height: auto;
+    padding: 50px;
 
 }
 
@@ -223,6 +226,7 @@ input::placeholder {
     justify-content: center;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 500;
+    margin-bottom: 100px;
 }
 
 .login p {
@@ -257,6 +261,14 @@ input, select, textarea{
     color: #D0D7DE;
 }
 
+.submit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    justify-content: end;
+}
 
 #submit-login {
     background-color: #0BA34E;
@@ -264,8 +276,6 @@ input, select, textarea{
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    position: absolute;
-    left: 650px;
 }
 
 .max-text-height {
@@ -454,3 +464,30 @@ input, select, textarea{
     border: #2C3440 2px solid;
 }
 
+.community-watchlists-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+
+}
+
+.community-watchlist {
+    align-items: center;
+    justify-content: center;
+    border-bottom: #2C3440 2px solid;
+    margin-bottom: 20px;
+    width: 500px;
+    height: 150px;
+    padding-left: 50px;
+}
+
+.square-button {
+    text-decoration: none;
+    border-radius: 2px;
+    background-color: #0BA34E;
+    color: #D0D7DE;
+    padding: 5px;
+}

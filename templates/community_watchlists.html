@@ -8,18 +8,22 @@
 
 
     <div class="hero-container">
-        <h1>Community Watchlists</h1>
+        <h1 class="max-text-height-2">Community Watchlists</h1>
     </div>
 
+    {% for watchlist in community_watchlists %}
     <div class="community-watchlists-container">
-        {% for watchlist in community_watchlists %}
         <div class="community-watchlist">
             <h2>{{watchlist[2]}}</h2>
-            <p>Title: {{watchlist[3]}}</p>
-            <p>Created by {{watchlist[3]}}</p>
-            <a href="/community_watchlist/{{watchlist['id']}}">View</a>
-        {% endfor %}
+            <br>
+            <p>Description: {{watchlist[3]}}</p>
+            <p>Created by: {{watchlist[1]}}</p>
+            <br>
+            <a class="square-button" href="/community_watchlist/{{watchlist['id']}}">View</a>
+
+        </div>
     </div>
+    {% endfor %}
 
 
 
