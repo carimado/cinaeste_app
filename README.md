@@ -50,7 +50,7 @@ Project Plan:
 5. Community Reviews
 
 [] Stage 4 - CSS
-1. index.html
+1. index.html - ✓
 2. profile.html
 3. login/sign_up.html - ✓
 4. search_results.html 
