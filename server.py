@@ -7,6 +7,8 @@ import os
 import cloudinary
 import cloudinary.uploader
 
+DB_URL = os.environ.get('DATABASE_URL', 'dbname=cinaeste')
+
 CLOUDINARY_CLOUD = os.environ.get('CLOUDINARY_CLOUD')
 CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY')
 CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET')
@@ -61,7 +63,7 @@ def add_favourite_action():
 
     print(json_data)
 
-    conn = psycopg2.connect("dbname=cinaeste")
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute("INSERT INTO fave_movies (user_id, movie_id, movie_title, movie_poster) VALUES (%s, %s, %s, %s)", [session['user_id'], imdbID_data, title, poster])
 
@@ -76,7 +78,7 @@ def delete_from_fave_movies(movie_id):
 
         print(movie_id)
     
-        conn = psycopg2.connect("dbname=cinaeste")
+        conn = psycopg2.connect(DB_URL)
         cur = conn.cursor()
         cur.execute("DELETE FROM fave_movies WHERE movie_id = %s", [movie_id])
     
@@ -89,7 +91,7 @@ def delete_from_fave_movies(movie_id):
 @app.route('/delete_watchlist/<id>')
 def delete_watchlist(id):
 
-    conn = psycopg2.connect('dbname=cinaeste')
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute('DELETE FROM watch_list_movies WHERE watch_list_id =%s', [id])
     conn.commit()
@@ -105,7 +107,7 @@ def delete_watchlist(id):
 @app.route('/delete_from_watchlist/<id>')
 def delete_from_watchlist(id):
 
-    conn = psycopg2.connect('dbname=cinaeste')
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute("DELETE FROM watch_list_movies WHERE movie_id =%s", [id])
     conn.commit()
@@ -121,7 +123,7 @@ def delete_from_watchlist(id):
 def watch_list_action(id):
 
     session['list_id'] = id
-    conn = psycopg2.connect("dbname=cinaeste")
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute("SELECT * FROM watch_list_movies WHERE watch_list_id=%s", [session['list_id']])
     watch_list = cur.fetchall()
@@ -176,7 +178,7 @@ def watch_list_add():
 
     movie_id = json_data['imdbID']
 
-    conn = psycopg2.connect("dbname=cinaeste")
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute("INSERT INTO watch_list_movies (watch_list_id, movie_id) VALUES (%s, %s)", [session['list_id'], movie_id])
 
@@ -205,7 +207,7 @@ def sign_up_action():
     email = request.form['email']
     password = request.form['password']
 
-    conn = psycopg2.connect("dbname=cinaeste")
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute('INSERT INTO users (f_name, l_name, email, password) VALUES (%s, %s, %s, %s)', [f_name, l_name, email, password])
 
@@ -226,7 +228,7 @@ def login_form_action():
     email = request.form['email']
     password = request.form['password']
 
-    conn = psycopg2.connect("dbname=cinaeste")
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute("SELECT id, email, password FROM users WHERE email=%s", [email])
     user_record = cur.fetchone()
@@ -268,7 +270,7 @@ def profile():
     # FOR TESTING
     # session['user_id'] = 1
 
-    conn = psycopg2.connect("dbname=cinaeste")
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute("SELECT * FROM users WHERE id =%s", [session['user_id']])
     id, f_name, l_name, email, password, bio, avatar = cur.fetchone()
@@ -308,7 +310,7 @@ def upload_profile_picture():
     print(uploaded_image)
     print(session['user_id'])
 
-    conn = psycopg2.connect("dbname=cinaeste")
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute('UPDATE users SET avatar=%s WHERE id=%s', [thumbnail_image[0], session['user_id']])
 
