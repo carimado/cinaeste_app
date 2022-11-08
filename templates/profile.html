@@ -7,7 +7,7 @@
 {% block body %} 
 
 <div class="hero-container" id="profile-hero-style">
-    <h1 class="max-text-height-2">YOUR PROFILE, <span class="name">{{ f_name }}</span>.</h1>
+    <h1 class="max-text-height-2">YOUR PROFILE, <span class="bg-text-green">{{ f_name }}</span>.</h1>
 </div>
 
 <!-- FOR PROFILE -->
@@ -39,9 +39,14 @@
                 {% for movie in fave_movies %}
                 <div class="contents">
                     <img src="{{ movie[4] }}" alt="">
+                    <br>
                     <p>{{ movie[3] }}</p>
-                    <a href="/delete_from_fave_movies/{{movie[2]}}">-</a>
+                    <br>
+                    <div class="remove-button">
+                        <a class="" href="/delete_from_fave_movies/{{movie[2]}}">DEL</a>
+                    </div>
                 </div>
+            
                 {% endfor %}
         </div>
 

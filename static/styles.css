@@ -347,7 +347,7 @@ input, select, textarea{
 #profile-hero-style {
     border-bottom: #2C3440 2px solid;
 }
-.name {
+.bg-text-green {
     background-color: #0BA34E;
     color: black;
 }
@@ -394,14 +394,21 @@ input, select, textarea{
     padding: 50px;
 }
 
-.contents a {
+.remove-button {
+    display: flex;
     width: 50px;
     height: 50px;
     border: none;
     border-radius: 50%;
     background-color: #0BA34E;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-button a {
+    text-decoration: none;
+    text-align: bottom;
     color: white;
-    text-align: center;
 }
 
 .box {
