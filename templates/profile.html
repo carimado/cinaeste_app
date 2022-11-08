@@ -63,9 +63,17 @@
             {% for list in watch_list %}
             <div class="contents">
                 <h3>{{ list[2] }}</h3>
+                <br>
                 <h4>{{ list[3] }}</h4>
-                <a href="/watch-list/{{list[0]}}">Watch List</a>
-                <a href="/delete_watchlist/{{list[0]}}">DELETE</a>
+                <br>
+                <div class="button-contents">
+                    <div class="remove-button">
+                        <a href="/watch-list/{{list[0]}}">GO</a>
+                    </div>
+                    <div class="remove-button">
+                        <a href="/delete_watchlist/{{list[0]}}">DEL</a>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>

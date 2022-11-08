@@ -14,7 +14,7 @@ html {
     /* background-color: #D5D6D2; */
     background: rgb(21,24,28);
     background: linear-gradient(0deg, rgba(21,24,28,1) 0%, rgba(32,39,46,1) 89%, rgba(49,59,69,1) 100%);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     font-family: 'Space Grotesk', sans-serif;
     color: #99AABB;
@@ -292,6 +292,10 @@ input, select, textarea{
     padding-right: 15px;
 }
 
+.footer h3 {
+    padding-bottom: 5px;
+}
+
 /* ____________________________________________ */
 /* SEARCH_RESULTS.HTML */
 /* ____________________________________________ */
@@ -403,12 +407,17 @@ input, select, textarea{
     background-color: #0BA34E;
     justify-content: center;
     align-items: center;
+    margin-right: 3px;
 }
 
 .remove-button a {
     text-decoration: none;
     text-align: bottom;
     color: white;
+}
+
+.button-contents {
+    display: flex;
 }
 
 .box {
