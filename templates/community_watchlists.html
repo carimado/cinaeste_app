@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block body %} 
+
+
+    <div class="hero-container">
+        <h1>Community Watchlists</h1>
+    </div>
+
+    <div class="community-watchlists-container">
+        {% for watchlist in community_watchlists %}
+        <div class="community-watchlist">
+            <h2>{{watchlist[2]}}</h2>
+            <p>Title: {{watchlist[3]}}</p>
+            <p>Created by {{watchlist[3]}}</p>
+            <a href="/community_watchlist/{{watchlist['id']}}">View</a>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

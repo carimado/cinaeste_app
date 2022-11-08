@@ -190,6 +190,16 @@ def watch_list_add():
 
     return redirect('/')
 
+@app.route('/community_watchlists')
+def community_watchlists():
+
+    conn = psycopg2.connect(DB_URL)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM watch_list")
+    community_watchlists = cur.fetchall()
+
+    return render_template('community_watchlists.html', community_watchlists=community_watchlists)
+
 @app.route('/about')
 def about():
     return render_template('about.html')
