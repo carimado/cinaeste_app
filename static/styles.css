@@ -34,11 +34,11 @@ html {
     padding: 0 1rem;
     height: 5rem;
     border-bottom: solid 2px black;
-    /* position: fixed;
+    position: fixed;
     top: 0;
     width: 100%;
-    background-color: #f5f5f5;
-    z-index: 1; */
+    z-index: 1;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .navbar-block-1 {
@@ -54,42 +54,50 @@ html {
     text-transform: bold;
 }
 
-.navbar-block-1 a {
-    margin-right: 100px;
+.navbar a {
+    margin-right: 20px;
 }
 
 .navbar-block-2 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 25%;
+    margin-left: -200px;
 }
+
 
 .navbar-block-3:last-of-type {
     margin-left: auto;
 }
 
 .navbar input[type=text] {
-    width: 200px;
-    height: 2rem;
-    border: 1px solid #B3A0CF;
+    width: 400px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2C3440;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 input[type=text]:focus {
-    outline: 1px solid #0BA34E;
+    outline: 2px solid #0BA34E;
 }
 
 input[type=submit] {
-    height: 35px;
+    height: 29px;
+    width: 50px;
     border: none;
     border-radius: 2px;
+    background-color: #0BA34E;
+    color: #D0D7DE;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 input::placeholder {
     padding-left: 5px;
     font-size: 15px;
-    color: rgba(0, 0, 0, 0.25);
-}
+    color: #99AABB;
+} 
 
 .navbar a {
     font-family: 'Space Grotesk', sans-serif;
@@ -102,43 +110,34 @@ input::placeholder {
 
 /* HERO SECTION */
 
-.hero-banner-image {
-    background-size: cover;
-    background-position: center;
-    height: 100%;
+.hero-banner-image img {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #99AABB;
+    height: 70%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .hero-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Space Grotesk', sans-serif;
     color: #D0D7DE;
-    height: 30vh;
+    height: 500px;
 }
 
 .hero-block-1 {
     width: 50%;
 }
 
-.hero-block-1 a {
-    text-decoration: none;
-    background-color: #0BA34E;
-    color: white;
-    height: 40px;
-    border-radius: 5px;
-    text-align: center;
-    padding-top: 10px;
-    font-size: 15px;
-    width: 150px;
+.hc1 {
+    margin-top: 675px;
+    height: auto;
+
 }
 
 .hero-block-1 h1 {
@@ -155,24 +154,37 @@ input::placeholder {
     font-size: 14px;
 }
 
-.hero-block-1 a {
+.hero-container a {
     padding-left: 20px;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
 }
 
-.hero-block-2 {
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    /* background-color: #B3A0CF; */
-    max-width: 50%;
-    height: 100%;
+.call-to-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+    margin-left: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #D0D7DE;
+    height: 50px;
+    margin-top: 20px;
+    /* border: 1px solid #D0D7DE; */
 }
 
-.hero-block-2 img {
-    width: 100%;
-    height: 100%;
+.call-to-action a {
+    text-decoration: none;
+    background-color: #0BA34E;
+    color: white;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 15px;
+    width: 200px;
 }
+
 
 /* LATEST NEWS SECTION */
 .latest-news-container {
@@ -225,16 +237,20 @@ input::placeholder {
     border-top: none;
     border-left: none;
     border-right: none;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .login-form input[type=text]:focus {
     outline: 1px solid #0BA34E;
+    font-family: 'Space Grotesk', sans-serif;
+    padding-left: 20px;
 }
 
 .login-form input[type=text]::placeholder {
     padding-left: 5px;
     font-size: 15px;
     color: #D0D7DE;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 input, select, textarea{
@@ -254,6 +270,26 @@ input, select, textarea{
 
 .max-text-height {
     font-size: 150px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    background-color: #2C3440;
+    color: #D0D7DE;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    border: 1px solid #2C3440;
+    padding: 10px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #99AABB;
+    padding-right: 15px;
 }
 
 /* ____________________________________________ */
