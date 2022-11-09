@@ -454,6 +454,18 @@ input, select, textarea{
     font-family: 'Space Grotesk', sans-serif;
 }
 
+.watchlist-title-container {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+}
+
+.watchlist-title-container h2 {
+    padding-right: 20px;
+    padding-top: 8px;
+}
+
 .watchlist-container {
     display: flex;
     flex-direction: row;
