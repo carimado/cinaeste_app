@@ -18,8 +18,8 @@ __________________________
 
 Project Plan:
 
-[] Ideation & Planning
-1. User stories / Features
+[✓] Ideation & Planning
+1. User stories / Features - ✓
 2. Create wireframes - ✓
 3. Design Inspo and Mockups - ✓
 
@@ -45,25 +45,30 @@ Project Plan:
 [] Stage 3 - 
 1. Image Uploader for Avatar - ✓
 2. Bio - UPDATE SQL
-3. Movie of the Day for index.html
+3. Movie of the Day for index.html - ✓
 4. Other Static Pages (about.html, etc.)
-5. Community Reviews
+5. Community Reviews - ✓
 
 [] Stage 4 - CSS
 1. index.html - ✓
-2. profile.html
+2. profile.html 
 3. login/sign_up.html - ✓
 4. search_results.html 
 5. movie_description.html
 
+[] Stage 5 - Extras that I forgot about :(
+1. Add a button for new users to create watchlists - ✓
+
 ✓
 
+TO DO 10/10:
+- Password Hashing
 __________________________
 
-MVP - 
-- To create a web app, uses API to fetch movies based on user searches to like and store in user profile and watch lists
+[✓] MVP
+- To create a web app, uses API to fetch movies based on user searches to like and store in user profile and watch lists - ✓
+- Visit community watchlists - ✓
 
 Extras - 
-- Reviews and comments for watch lists
+- Reviews and comments for watch lists 
 - Top 250 movies and shows
-- Trending Watchlists (shows all watchlists from all users)

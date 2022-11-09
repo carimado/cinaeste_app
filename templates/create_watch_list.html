@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block body %} 
+
+<div class="hero-container">
+    <h1 class="max-text-height">NEW WATCHLIST</h1>
+</div>
+
+<div class="login-form">
+    <form class="login" action="/create_watch_list_action" method="POST">
+        <h1>Hello there, do you want to create a new watchlist?</h1>
+        <br>
+        <br>
+        <p>What will your watchlist be called? <input type="text" name="title" placeholder="Your Title" required></p>
+        <br>
+        <p>Describe your watchlist <input type="text" name="description" placeholder="Your Description"></p>
+        <br>
+        <div class="submit">
+            <input id="submit-login" type="submit" value="CREATE">
+        </div>
+    </form> 
+</div> 
+
+
+{% endblock %}

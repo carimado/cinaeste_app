@@ -2,10 +2,12 @@ from flask import Flask, render_template, request, redirect, session, url_for
 import psycopg2
 import requests
 import json
+import random
 import bcrypt
 import os
 import cloudinary
 import cloudinary.uploader
+import random
 
 DB_URL = os.environ.get('DATABASE_URL', 'dbname=cinaeste')
 
@@ -30,7 +32,18 @@ watch_list = 0
 @app.route('/')
 def index():
 
-    return render_template('index.html')
+    random_number = random.randint(1, 2000000)
+
+    response = requests.get(f'http://www.omdbapi.com/?i=tt{random_number}&apikey=4b9f1a76')
+    data = response.json()
+
+    if data['Response'] != 'False' and data['Poster'] != 'N/A':
+        title = data['Title']
+        poster = data['Poster']
+        return render_template('index.html', title=title, poster=poster)
+    else:
+        return redirect(url_for('index'))
+
 
 # FROM INDEX.HTML > SEARCH_RESULTS.HTML
 # THIS SHOWS A LIST OF ALL THE MOVIE RESULTS
@@ -189,6 +202,26 @@ def watch_list_add():
     print(movie_id)
 
     return redirect('/')
+
+@app.route('/create_watch_list')
+def create_watch_list():
+        return render_template('create_watch_list.html')
+
+@app.route('/create_watch_list_action', methods=['POST'])
+def create_watch_list_action():
+    
+        watch_list_name = request.form['title']
+        watch_list_description = request.form['description']
+    
+        conn = psycopg2.connect(DB_URL)
+        cur = conn.cursor()
+        cur.execute("INSERT INTO watch_list (user_id, watch_list_name, watch_list_description) VALUES (%s, %s, %s)", [session['user_id'], watch_list_name, watch_list_description])
+    
+        conn.commit()
+        cur.close()
+        conn.close()
+    
+        return redirect('/profile')
 
 @app.route('/community_watchlists')
 def community_watchlists():
