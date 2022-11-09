@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block body %} 
+
+
+    <div class="hero-container">
+        <h1 class="max-text-height-2">Community Watchlists</h1>
+    </div>
+
+    {% for movies in movie_list_data %}
+    <div class="community-watchlists-view-container">
+        <div class="movie-content">
+            <div class="movie-poster">
+                <img src="{{movies['Poster']}}" alt="movie poster">
+            </div>
+            <div class="movie-info">
+                <h2>{{movies['Title']}}</h2>
+                <p>Year: {{movies['Year']}}</p>
+                <p>Release Date: {{movies['Released']}}</p>
+                <p>Rating: {{movies['imdbRating']}}</p>
+                <p>Genre: {{movies['Genre']}}</p>
+                <p>Runtime: {{movies['Runtime']}}</p>
+                <p>Director: {{movies['Director']}}</p>
+                <p>Cast: {{movies['Actors']}}</p>
+                <p>Plot: {{movies['Plot']}}</p>
+            </div>
+        </div>
+        </div>
+
+    {% endfor %}
+
+
+
+{% endblock %}

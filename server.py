@@ -200,6 +200,46 @@ def community_watchlists():
 
     return render_template('community_watchlists.html', community_watchlists=community_watchlists)
 
+@app.route('/community_watchlist/<id>')
+def community_watchlist_view(id):
+    
+        conn = psycopg2.connect(DB_URL)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM watch_list_movies WHERE watch_list_id=%s", [id])
+        watch_list = cur.fetchall()
+
+        print(watch_list)
+    
+        movie_list_data = []
+    
+        for movie in watch_list:
+            response = requests.get(f'http://www.omdbapi.com/?i={movie[2]}&apikey=4b9f1a76')
+            data = response.json()
+    
+            movie_details = {}
+    
+            movie_details['imdbID'] = data['imdbID']
+            movie_details['Title'] = data['Title']
+            movie_details['Year'] = data['Year']
+            movie_details['Runtime'] = data['Runtime']
+            movie_details['Director'] = data['Director']
+            movie_details['Poster'] = data['Poster']
+            movie_details['imdbRating'] = data['imdbRating']
+            movie_details['Plot'] = data['Plot']
+            movie_details['Actors'] = data['Actors']
+            movie_details['Genre'] = data['Genre']
+    
+            movie_list_data.append(movie_details)
+
+            print(data)
+    
+        
+        # print(movie_list_data)
+        
+    
+        return render_template('community_watchlists_view.html', movie_list_data=movie_list_data)
+
+
 @app.route('/about')
 def about():
     return render_template('about.html')
