@@ -51,10 +51,11 @@ Project Plan:
 
 [] Stage 4 - CSS
 1. index.html - ✓
-2. profile.html 
+2. profile.html - ✓
 3. login/sign_up.html - ✓
-4. search_results.html 
+4. search_results.html - ✓
 5. movie_description.html
+6. hover effects for buttons
 
 [] Stage 5 - Extras that I forgot about :(
 1. Add a button for new users to create watchlists - ✓
@@ -71,4 +72,4 @@ __________________________
 
 Extras - 
 - Reviews and comments for watch lists 
-- Top 250 movies and shows
+- Top 250 movies and shows (API DOES NOT ALLOW)
