@@ -7,7 +7,7 @@ CREATE TABLE users (
     f_name VARCHAR(50) NOT NULL,
     l_name VARCHAR(50),
     email TEXT NOT NULL,
-    password TEXT NOT NULL,
+    password_hash TEXT NOT NULL,
     bio TEXT,
     avatar TEXT
 );

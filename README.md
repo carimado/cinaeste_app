@@ -36,10 +36,10 @@ Project Plan:
 1. Create schema.sql for database - ✓
 2. Create seed.sql for database - ✓
 
-[] Stage 2 - CRUD and Routing
+[✓] Stage 2 - CRUD and Routing
 1. profile.html - HTML/CSS - ✓
 2. Linking pages and routes (through submitting forms and jinja linking) - ✓
-3. Registration and Login w/ password hashing and sessions
+3. Registration and Login w/ password hashing and sessions - ✓
 4. DELETE (Remove movies from Watchlist and Favourites) - ✓
 
 [] Stage 3 - 
@@ -54,7 +54,7 @@ Project Plan:
 2. profile.html - ✓
 3. login/sign_up.html - ✓
 4. search_results.html - ✓
-5. movie_description.html
+5. movie_description.html - ✓
 6. hover effects for buttons
 
 [] Stage 5 - Extras that I forgot about :(
@@ -63,8 +63,7 @@ Project Plan:
 ✓
 
 TO DO 10/10:
-- movie_description.html
-- Password Hashing
+- Password Hashing - ✓
 - Fix hero container
 - Logos (Social Media Links, GO button)
 __________________________

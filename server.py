@@ -316,9 +316,11 @@ def sign_up_action():
     email = request.form['email']
     password = request.form['password']
 
+    password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode()
+
     conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
-    cur.execute('INSERT INTO users (f_name, l_name, email, password) VALUES (%s, %s, %s, %s)', [f_name, l_name, email, password])
+    cur.execute('INSERT INTO users (f_name, l_name, email, password_hash) VALUES (%s, %s, %s, %s)', [f_name, l_name, email, password_hash])
 
     conn.commit()
     cur.close()
@@ -339,18 +341,18 @@ def login_form_action():
 
     conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
-    cur.execute("SELECT id, email, password FROM users WHERE email=%s", [email])
+    cur.execute("SELECT id, email, password_hash FROM users WHERE email=%s", [email])
     user_record = cur.fetchone()
 
     cur.close()
     conn.close()
 
-    user_id, user_email, user_password = user_record
-    # valid = bcrypt.checkpw(password.encode('utf-8'), user_password.encode('utf-8'))
+    user_id, user_email, user_password_hash = user_record
+    valid = bcrypt.checkpw(password.encode('utf-8'), user_password_hash.encode('utf-8'))
 
 
-    if user_record:
-        print(f'Logged in as ID: {user_email}, Password: {password}')
+    if user_record and valid:
+        print(f'Logged in as ID: {user_email}, Password: {user_password_hash}')
         response = redirect('/')
         session['user_id'] = user_id
         return response
