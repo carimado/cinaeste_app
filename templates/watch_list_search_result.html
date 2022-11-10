@@ -6,14 +6,28 @@
 
 {% block body %} 
 
-    <h1>Hello</h1>
-    {% for movie in search_results %}
-    <div>{{movie['imdbID']}}</div>
-    <!-- CREATE A ROUTE FOR WATCH LIST -->
-    <form action="/watch_list_add" method="POST">
-        <input type="type" value="{{ movie }}" name="movie_to_add" hidden>
-        <input type="submit" value="ADD TO WATCHLIST">
-    </form>
-    {% endfor %}
+
+    <div class="hero-container bb">
+        <h1 class="max-text-height-2">SEARCH RESULTS</h1>
+    </div>
+    
+        <div class="search-result-container">
+            <a href="/" class="href">Back</a>    
+        {% for movie in search_results %}
+            <div class="search-results">
+                <img src="{{movie['Poster']}}" alt="Image of {{ movie['Title'] }} Poster">
+    
+                <div class="search-description">
+                    <a href="/movie_info/{{movie['Title']}}"><h2>{{movie['Title']}}</h2></a>
+                    <p>{{movie['Year']}}</p>
+                    <form action="/watch_list_add" method="POST">
+                        <input type="type" value="{{ movie }}" name="movie_to_add" hidden>
+                        <input type="submit" value="ADD">
+                    </form>
+                </div>
+            </div>
+    
+        {% endfor %}
+        </div>
 
 {% endblock %}

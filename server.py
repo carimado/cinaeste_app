@@ -204,6 +204,7 @@ def watch_list_search_result():
     data = response.json()
 
     search_results = data['Search']
+    
 
     return render_template('watch_list_search_result.html', id=id, search_results=search_results)
 
