@@ -66,6 +66,8 @@ TO DO 10/10:
 - Password Hashing - ✓
 - Fix hero container
 - Logos (Social Media Links, GO button)
+- if no account redirect to login page
+- Watchlist_list_search_results when creating a new watchlist
 __________________________
 
 [✓] MVP
