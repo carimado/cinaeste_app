@@ -352,7 +352,7 @@ def login_form_action():
     if user_record:
         if bcrypt.checkpw(password.encode('utf-8'), user_record[2].encode('utf-8')):
             session['user_id'] = user_record[0]
-            return redirect('/')
+            return redirect('/profile')
     else:
         return redirect('/login')
             
