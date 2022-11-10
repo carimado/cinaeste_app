@@ -347,21 +347,37 @@ def login_form_action():
     cur.close()
     conn.close()
 
-    user_id, user_email, user_password_hash = user_record
-    valid = bcrypt.checkpw(password.encode('utf-8'), user_password_hash.encode('utf-8'))
+    print(user_record)
 
-
-    if user_record and valid:
-        print(f'Logged in as ID: {user_email}, Password: {user_password_hash}')
-        response = redirect('/')
-        session['user_id'] = user_id
-        return response
+    if user_record:
+        if bcrypt.checkpw(password.encode('utf-8'), user_record[2].encode('utf-8')):
+            session['user_id'] = user_record[0]
+            return redirect('/')
     else:
-        print(email)
-        print('User record not found')
         return redirect('/login')
+            
 
-    return redirect('/')
+    # user_id, user_email, user_password_hash = user_record
+    # valid = bcrypt.checkpw(password.encode('utf-8'), user_password_hash.encode('utf-8'))
+
+    # print(user_record)
+
+    # if valid:
+    #     session['user_id'] = user_id
+    #     return redirect('/profile')
+    # else:
+    #     return redirect('/login')
+
+
+    # if user_record and valid:
+    #     print(f'Logged in as ID: {user_email}, Password: {user_password_hash}')
+    #     response = redirect('/')
+    #     session['user_id'] = user_id
+    #     return response
+    # else:
+    #     print(email)
+    #     print('User record not found')
+    #     return redirect('/login')
 
 
 @app.route('/logout')
