@@ -86,6 +86,32 @@ def add_favourite_action():
 
     return redirect('/')
 
+# THIS SHOWS THE MOVIE INFO
+@app.route('/movie_info/<moviename>')
+def movie_info(moviename):
+    
+        response = requests.get(f'http://www.omdbapi.com/?t={moviename}&apikey=4b9f1a76')
+        data = response.json()
+    
+        response_of_movie = data['Response']
+    
+        if response_of_movie == 'True':
+            title = data['Title']
+            year = data['Year']
+            poster = data['Poster']
+            plot = data['Plot']
+            rated = data['Rated']
+            runtime = data['Runtime']
+            directors = data['Director']
+            actors = data['Actors']
+            imdbID = data['imdbID']
+            print(response_of_movie)
+            return render_template('movie_info.html', title=title, directors=directors, actors=actors,
+            year=year, poster=poster, rated=rated, plot=plot, runtime=runtime, imdbID=imdbID)
+        else: 
+            error = 'Did not find the movie!'
+            return render_template('movie_info.html', error=error)
+
 @app.route('/delete_from_fave_movies/<movie_id>')
 def delete_from_fave_movies(movie_id):
 
@@ -401,18 +427,8 @@ def upload_profile_picture():
     cur.close()
     conn.close()
 
-
     return redirect(url_for('profile'))
 
 if __name__ == '__main__':
     from dotenv import load_dotenv
     app.run(debug=True)
-
-
-
-
-
-
-
-
-

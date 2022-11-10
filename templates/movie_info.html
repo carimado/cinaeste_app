@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block body %} 
+
+<div class="hero-container bb">
+    <h1 class="max-text-height-2">SEARCH RESULTS</h1>
+</div>
+
+<div class="display-movie-details-container">
+    <h1 class="movie-title">{{ title }} {{ error }}</h1>
+    <p>{{ year }} &bull; {{ rated }} &bull; {{ runtime }}</p>
+    <img src="{{poster}}" alt="">
+
+    <div class="description">
+        <p class="plot">{{ plot }}</p>
+
+        <p><a href="https://www.imdb.com/title/{{ imdbID }}/" class="link-to-imdb">IMDb</a></p>
+
+        <div class="cast">
+            <p>Director: <span class="cast-info">{{ directors }}</span></p>
+            <p>Actors: <span class="cast-info">{{ actors }}</span></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

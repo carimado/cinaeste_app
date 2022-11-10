@@ -63,7 +63,10 @@ Project Plan:
 ✓
 
 TO DO 10/10:
+- movie_description.html
 - Password Hashing
+- Fix hero container
+- Logos (Social Media Links, GO button)
 __________________________
 
 [✓] MVP
