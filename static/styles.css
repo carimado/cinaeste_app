@@ -500,6 +500,12 @@ input, select, textarea{
     font-family: 'Space Grotesk', sans-serif;
 }
 
+.watchlist-search-result-container {
+    display: flex;
+    font-family: 'Grotesk', sans-serif;
+    padding: 50px;
+}
+
 .watchlist-title-container {
     display: flex;
     flex-direction: row;

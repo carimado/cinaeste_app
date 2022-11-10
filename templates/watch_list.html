@@ -6,17 +6,28 @@
 
 {% block body %} 
 
+<div class="hero-container bb">
+    <h1 class="max-text-height-2">Your Watchlist</h1>
+</div>
+
 <div class="main-container">
     <h1>ALL THE MOVIES IN THIS WATCHLIST</h1>
     <!-- THIS IS A LIST OF WATCH LISTS -->
 
-
     {% for movie in movie_list_data %}
-    <div>{{movie['Title']}}</div>
-    <div>{{movie['Year']}}</div>
-    <div>{{movie['Director']}}</div>
-    <img src="{{movie['Poster']}}" alt="">
-    <a href="/delete_from_watchlist/{{movie['imdbID']}}">Delete</a>
+        <div class="watchlist-search-result-container">
+            <div class="poster-container">
+                <img src="{{movie['Poster']}}" alt="Image of {{ movie['Title'] }} Poster">
+            </div>
+            <div class="movie-description">
+                <a href="/movie_info/{{movie['Title']}}"><h2>{{movie['Title']}}</h2></a>
+                <p>{{movie['Year']}}</p>
+                <p>{{movie['Director']}}</p>
+                <p>{{movie['Genre']}}</p>
+                <p>{{movie['Plot']}}</p>
+                <a href="/delete_from_watchlist/{{movie['imdbID']}}">Delete</a>
+            </div>
+        </div>
     {% endfor %}
 
 

@@ -182,6 +182,7 @@ def watch_list_action(id):
         movie_details['Director'] = data['Director']
         movie_details['Poster'] = data['Poster']
         movie_details['imdbRating'] = data['imdbRating']
+        movie_details['Plot'] = data['Plot']
 
         movie_list_data.append(movie_details)
 
