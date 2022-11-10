@@ -299,12 +299,15 @@ input, select, textarea{
     font-weight: 500;
     border: 1px solid #2C3440;
     padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .footer a {
     text-decoration: none;
     color: #99AABB;
     padding-right: 15px;
+    font-size: 15px;
 }
 
 .footer h3 {

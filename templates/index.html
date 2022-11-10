@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cineaste - Discover And Share Your Favourite Movies</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://kit.fontawesome.com/e45a6bb491.js" crossorigin="anonymous"></script>
     {% block head %} {% endblock %}
 </head>
 <body>
@@ -42,14 +43,22 @@
         <div class="main-container-index">
             <div class="hc1">
                 <div class="hero-block-1">
+                {% if session.user_id %}
+                    <h1>Share your life in film</h1>
+                    <br>
+                    <p>Start sharing your playlists to the community now!</p>
+                <div class="call-to-action">
+                    <a href="/profile">Compile your lists</a>
+                </div>
+                {% else %}
                     <h1>Dive into the film world</h1>
                     <br>
-                    <p>Join the community of cinephiles and share your thoughts on community driven watchlists.</p>
-    
+                    <p>Join the community of "cineastes" and share your thoughts on community driven watchlists.</p>
                 </div>
                 <div class="call-to-action">
-                    <a href="/sign_up">Get Started - It's Free</a>
+                    <a href="/sign_up">Get Started - It's Free!</a>
                 </div>
+                {% endif %}
             
             </div>
             <div class="hc2">
@@ -69,11 +78,14 @@
                 <a href="#">Watchlists</a>
                 <a href="#">About</a>
             </div>
-            <div class="footer-block-2">
-                <h3>Community</h3>
-                <a href="#">Sign up</a>
-                <a href="#">Log in</a>
-            </div>
+            {% if session.user_id %}
+            {% else %}
+                <div class="footer-block-2">
+                    <h3>Community</h3>
+                    <a href="#">Sign up</a>
+                    <a href="#">Log in</a>
+                </div>
+            {% endif %}
             <div class="footer-block-3">
                 <h3>Legal</h3>
                 <a href="#">Terms of Service</a>
@@ -81,9 +93,10 @@
             </div>
             <div class="footer-block-4">
                 <h3>Follow</h3>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </footer>
 </body>
