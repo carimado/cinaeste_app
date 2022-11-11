@@ -12,12 +12,11 @@
     </div>
 
     {% for movies in movie_list_data %}
-    <div class="community-watchlists-view-container">
-        <div class="movie-content">
-            <div class="movie-poster">
+    <div class="watchlist-search-result-container">
+            <div class="poster-container">
                 <img src="{{movies['Poster']}}" alt="movie poster">
             </div>
-            <div class="movie-info">
+            <div class="movie-description">
                 <h2>{{movies['Title']}}</h2>
                 <p>Year: {{movies['Year']}}</p>
                 <p>Release Date: {{movies['Released']}}</p>
@@ -28,8 +27,7 @@
                 <p>Cast: {{movies['Actors']}}</p>
                 <p>Plot: {{movies['Plot']}}</p>
             </div>
-        </div>
-        </div>
+    </div>
 
     {% endfor %}
 

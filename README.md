@@ -44,7 +44,7 @@ Project Plan:
 
 [] Stage 3 - 
 1. Image Uploader for Avatar - ✓
-2. Bio - UPDATE SQL
+2. Bio - UPDATE SQL- ✓
 3. Movie of the Day for index.html - ✓
 4. Other Static Pages (about.html, etc.)
 5. Community Reviews - ✓
@@ -60,14 +60,12 @@ Project Plan:
 [] Stage 5 - Extras that I forgot about :(
 1. Add a button for new users to create watchlists - ✓
 
-✓
-
-TO DO 10/10:
+TO DO 11/10:
 - Password Hashing - ✓
-- Fix hero container
-- Logos (Social Media Links, GO button)
-- if no account redirect to login page
-- Watchlist_list_search_results when creating a new watchlist
+- Fix hero container - ✓
+- Logos (Social Media Links, GO button) - ✓
+- if no account redirect to login page - ✓
+- Watchlist_search_results when creating a new watchlist
 __________________________
 
 [✓] MVP

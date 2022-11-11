@@ -11,7 +11,6 @@
 </div>
 
 <div class="main-container">
-    <h1>ALL THE MOVIES IN THIS WATCHLIST</h1>
     <!-- THIS IS A LIST OF WATCH LISTS -->
 
     {% for movie in movie_list_data %}
@@ -25,7 +24,7 @@
                 <p>{{movie['Director']}}</p>
                 <p>{{movie['Genre']}}</p>
                 <p>{{movie['Plot']}}</p>
-                <a href="/delete_from_watchlist/{{movie['imdbID']}}">Delete</a>
+                <a class="square-button" href="/delete_from_watchlist/{{movie['imdbID']}}">Delete</a>
             </div>
         </div>
     {% endfor %}

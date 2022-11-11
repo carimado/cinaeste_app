@@ -565,3 +565,17 @@ input, select, textarea{
     background-color: #2C3440;
     color: #D0D7DE;
 }
+
+/* ____________________________________________ */
+/* watch_list.HTML */
+/* ____________________________________________ */
+
+.movie-description {
+    margin-left: 20px;
+}
+
+.movie-description h2, p, a {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
