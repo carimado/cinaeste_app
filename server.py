@@ -31,18 +31,19 @@ watch_list = 0
 
 @app.route('/')
 def index():
+    return render_template('index.html')
 
-    random_number = random.randint(1, 2000000)
+    # random_number = random.randint(1, 2000000)
 
-    response = requests.get(f'http://www.omdbapi.com/?i=tt{random_number}&apikey=4b9f1a76')
-    data = response.json()
+    # response = requests.get(f'http://www.omdbapi.com/?i=tt{random_number}&apikey=4b9f1a76')
+    # data = response.json()
 
-    if data['Response'] != 'False' and data['Poster'] != 'N/A':
-        title = data['Title']
-        poster = data['Poster']
-        return render_template('index.html', title=title, poster=poster)
-    else:
-        return redirect(url_for('index'))
+    # if data['Response'] != 'False' and data['Poster'] != 'N/A':
+    #     title = data['Title']
+    #     poster = data['Poster']
+    #     return render_template('index.html', title=title, poster=poster)
+    # else:
+    #     return redirect(url_for('index'))
 
 
 # FROM INDEX.HTML > SEARCH_RESULTS.HTML
@@ -357,29 +358,7 @@ def login_form_action():
             return redirect('/profile')
     else:
         return redirect('/login')
-            
 
-    # user_id, user_email, user_password_hash = user_record
-    # valid = bcrypt.checkpw(password.encode('utf-8'), user_password_hash.encode('utf-8'))
-
-    # print(user_record)
-
-    # if valid:
-    #     session['user_id'] = user_id
-    #     return redirect('/profile')
-    # else:
-    #     return redirect('/login')
-
-
-    # if user_record and valid:
-    #     print(f'Logged in as ID: {user_email}, Password: {user_password_hash}')
-    #     response = redirect('/')
-    #     session['user_id'] = user_id
-    #     return response
-    # else:
-    #     print(email)
-    #     print('User record not found')
-    #     return redirect('/login')
 
 
 @app.route('/logout')
